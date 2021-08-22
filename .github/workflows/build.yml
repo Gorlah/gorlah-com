@@ -19,17 +19,6 @@ defaults:
 
 jobs:
 
-  build:
-    if: github.ref != 'refs/heads/main' && github.event_name == 'push'
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-
-      - name: Build app
-        run: ./gradlew build --console=plain
-
   docker:
     if: github.ref == 'refs/heads/main' && github.event_name == 'push'
     runs-on: ubuntu-latest
@@ -37,9 +26,6 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-
-      - name: Build app
-        run: ./gradlew build --console=plain
 
       - name: Build image
         run: docker build . --file Dockerfile --tag $IMAGE_NAME
