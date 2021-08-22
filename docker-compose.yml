@@ -1,0 +1,11 @@
+services:
+  web:
+    build: .
+    image: gorlah/gorlah.com
+    restart: always
+
+networks:
+  default:
+    external:
+      name: nginx-reverse-proxy
+
