@@ -27,7 +27,6 @@ metadata:
   name: gorlah-com
   namespace: default
 spec:
-  type: NodePort
   selector:
     app: gorlah-com
   ports:
